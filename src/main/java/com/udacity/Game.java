@@ -151,6 +151,75 @@ public class Game {
     public String checkGameWinner(char [][]grid){
         String result = "None";
         //Student code goes here ...
+        boolean flagX = false;
+        boolean flagO=false;
+        boolean flag2=false;
+        for(int i=0;i<3;i++)
+        {
+            int cntX=0;
+            int cntO=0;
+            for(int j=0;j<3;j++)
+            {
+                if(grid[i][j]=='x')
+                    cntX++;
+                else if(grid[i][j]=='o')
+                    cntO++;
+            }
+            if(cntX==3)
+                flagX=true;
+            else if(cntO==3)
+                flagO=true;
+            cntX=0;
+            cntO=0;
+            for(int j=0;j<3;j++)
+            {
+                if(grid[j][i]=='x')
+                    cntX++;
+                else if(grid[j][i]=='o')
+                    cntO++;
+                else flag2=true;
+            }
+            if(cntX==3)
+                flagX=true;
+            else if(cntO==3)
+                flagO=true;
+        }
+        int cntX=0;
+        int cntO=0;
+        for(int i=0;i<3;i++){
+            if(grid[i][i]=='x')
+                cntX++;
+            else if(grid[i][i]=='o')
+                cntO++;
+        }
+        if(cntX==3)
+            flagX=true;
+        if(cntO==3)
+            flagO=true;
+        cntX=0;
+        cntO=0;
+        if(grid[2][0]=='x')
+            cntX++;
+        else if(grid[2][0]=='o')
+            cntO++;
+        if(grid[1][1]=='x')
+            cntX++;
+        else if(grid[1][1]=='o')
+            cntO++;
+        if(grid[0][2]=='x')
+            cntX++;
+        else if(grid[0][2]=='o')
+            cntO++;
+        if(cntX==3)
+            flagX=true;
+        if(cntO==3)
+            flagO=true;
+        if(flagX)
+           result="x wins";
+        else if(flagO)
+           result="o wins";
+        else if(!flag2)
+            result="tie";
         return result;
     }
 
